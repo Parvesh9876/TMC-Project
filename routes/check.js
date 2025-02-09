@@ -1,5 +1,7 @@
 const ReciveOutModel=require("../models/recieveoutside")
 const bodyparser=require("body-parser")
+const Teacher=require("../models/teacherDetail")
+
 const express=require("express")
 
 const router=express.Router();
@@ -12,7 +14,7 @@ router.get("/",async(req,res)=>{
         
         const data=await ReciveOutModel.find();
         
-        res.render("table",{data});
+        res.render("show",{data});
         // res.send("Hello Worl")
 
 
@@ -28,62 +30,80 @@ router.post("/byid",async(req,res)=>{
         
         const data=await ReciveOutModel.find({PacketNo:para});
         // res.status(200).json({msg:"Success",data:check});
-        res.render("table",{data});
+        console.log(data);
+        res.render("show",{data});
 
     }catch(er){
         console.log(er);
         res.status(500).json({msg:"Error Something"});
     }
 })
-router.post("/alloted",async(req,res)=>{
+router.get("/alloted",async(req,res)=>{
     try{
         
         
         const data=await ReciveOutModel.find({Alloted:"true"});
         // res.status(200).json({msg:"Success",data:check});
-        res.render("table",{data});
+        console.log("Hello" , data);
+        res.render("show",{data});
 
     }catch(er){
         console.log(er);
         res.status(500).json({msg:"Error Something"});
     }
 })
-router.post("/notalloted",async(req,res)=>{
+router.get("/notalloted",async(req,res)=>{
     try{
        
         
         
         const data=await ReciveOutModel.find({Alloted:false});
         // res.status(200).json({msg:"Success",data:check});
-        res.render("table",{data});
+        res.render("show",{data});
 
     }catch(er){
         console.log(er);
         res.status(500).json({msg:"Error Something"});
     }
 })
-router.post("/checked",async(req,res)=>{
+router.get("/checked",async(req,res)=>{
     try{
        
         
         
         const data=await ReciveOutModel.find({Checked:true});
+        console.log("Hello" , data);
         // res.status(200).json({msg:"Success",data:check});
-        res.render("table",{data});
+        res.render("show",{data});
 
     }catch(er){
         console.log(er);
         res.status(500).json({msg:"Error Something"});
     }
 })
-router.post("/notchecked",async(req,res)=>{
+router.get("/notchecked",async(req,res)=>{
     try{
        
         
         
-        const data=await ReciveOutModel.find({Alloted:false});
+        const data=await ReciveOutModel.find({Checked:false});
         // res.status(200).json({msg:"Success",data:check});
-        res.render("table",{data});
+        res.render("show",{data});
+
+    }catch(er){
+        console.log(er);
+        res.status(500).json({msg:"Error Something"});
+    }
+})
+router.get("/teacher",async(req,res)=>{
+    try{
+        
+        const data=await Teacher.find();
+        console.log("Hello Data Is here",data);
+        
+        res.render("TeacherShow",{data});
+        // res.send("Hello Worl")
+
 
     }catch(er){
         console.log(er);

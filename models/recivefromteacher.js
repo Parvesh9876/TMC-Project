@@ -5,30 +5,15 @@ const userSchema=mongoose.Schema({
         required:true,
         
     },
-    TeacherId:{
-        type:Number,
-        required:true
-    },
-    NoofSheet:{
-        type:Number,
-        required:true
-    },
     RecieveBy:{
         type:String,
         required:true
     },
-    RecieveFrom:{
+    Date:
+    {
         type:String,
         required:true
-    },
-    Date:{
-        type:String,
-        required:true
-    },
-    Time:{
-        type:String,
-        required:true
-    },   
+    }
    
 })
 const recievePacket=mongoose.model('recievePacket',userSchema);

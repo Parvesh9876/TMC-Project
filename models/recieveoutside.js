@@ -5,46 +5,25 @@ const reicievefromoutside=mongose.Schema({
         required:true,
         unique:true
     },
-    NoofSheet:{
+    InstituteCode:{
         type:Number,
         required:true
     },
-    Source:{
+    NoofSheet:{  
+        type:Number,
+        required:true
+    },
+    BranchCode:{
         type:String,
         required:true
     },
-    Destination:{
-        type:String,
-        required:true
-    },
-    Date:{
-        type:String,
-        required:true
-    },
-    Time:{
-        type:String,
-        required:true
-    },
-    type:{
-        type:String,
-        required:true
-    },
-    Shift:{
-        type:String,
-        required:true,
-
-    },
-    Semester:{
-        type:String,
-        required:true
-    },
-    Subject:{
+    Status:{
         type:String,
         required:true
     },
     Alloted:{
         type :String,
-        required:true,
+        
         default:false
     },
     Checked:{

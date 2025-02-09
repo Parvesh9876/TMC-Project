@@ -43,27 +43,32 @@ const check = async (id) => {
     }
 }
 
+
 router.post("/", async (req, res) => {
     try {
         const data = req.body;
-        const pac = req.body.PacketNo;
+        const pac = req.body.Packet;
         const checkData = data.TeacherId;
         console.log("checkData:", checkData);
         const exist = await check(checkData);
-        console.log("Exist:", exist);
+      
+      
+       
 
         if (exist) {
             console.log("Document exists. Updating...");
             const obj = {
-                Packetno: data.PacketNo,
-                time: data.Time,
-                date: data.Date
+                Packetno: data.Packet,
+                SubjectCode: data.SubjectCode,
+                NoOfSheet:data.NoOfSheet
+                
             }
             const query = {
                 TeacherId: data.TeacherId
             }
-            const append = await PacketAllocate.findOneAndUpdate(query, { $push: { PacketNo: obj } });
+            const append = await PacketAllocate.findOneAndUpdate(query, { $push: { Packet: obj } });
             update_Packet(pac);
+            console.log(append);
             if (append) {
                 console.log("Success");
                 res.status(200).json({ msg: "Success" });
@@ -74,25 +79,26 @@ router.post("/", async (req, res) => {
         } else {
             console.log("Document does not exist. Creating new document...");
             const newPacket = new PacketAllocate({
-                PacketNo: [
+                Packet: [
                     {
-                        Packetno: data.PacketNo,
-                        time: data.Time,
-                        date: data.Date
+                        Packetno: data.Packet,
+                        SubjectCode:data.SubjectCode,
+                        NoOfSheet:data.NoOfSheet
+                        
                     }
                 ],
                 TeacherId: data.TeacherId,
-                NoofSheet: data.NoofSheet,
-                AllotBy: data.AllotBy,
-                AllotTo: data.AllotTo,
+                AllocateBy: data.AllocateBy,
                 Date: data.Date,
-                Time: data.Time,
-                Semester: data.Semester,
-                Subject: data.Subject
+                Supervisor: data.Supervisor,
+                HeadExaminar: data.HeadExaminar,
+                
             });
+            //  
             const response = await newPacket.save();
             update_Packet(pac);
-            res.status(200).json({ msg: "Success", data: response, PacketNo: pac });
+            // res.status(200).json({ msg: "Success", data: response, PacketNo: pac });
+            res.redirect("/admin/allocatepacket")
         }
     } catch (er) {
         console.log("Error in router.post:", er);

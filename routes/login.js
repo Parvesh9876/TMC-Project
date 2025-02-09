@@ -28,7 +28,7 @@ route.post("/",async(req,res)=>{
                
                 res.status(404).json({msg:"Wrong Password"})
             }else{
-                res.render("adminHome");
+                res.render("adminPanel");
                 
             }
         }

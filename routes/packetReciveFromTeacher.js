@@ -31,7 +31,8 @@ router.post("/",async(req,res)=>{
         const response=await newPacket.save();   
         
         update_Packet(pac)       
-        res.status(200).json({msg:"Success",data:response,PacketNo:pac});
+        // res.status(200).json({msg:"Success",data:response,PacketNo:pac});
+        res.redirect("/admin/recivepacket")
     }catch(er){
         console.log(er);
         res.status(500).json({msg:"Error Something"});

@@ -2,14 +2,13 @@ const mongoose=require('mongoose');
 const userSchema=mongoose.Schema({
   
 
-    PacketNo:{
-        type:[
-                
+    Packet:{
+        type:[               
                     {
                         Packetno:Number,
-                        time:String,
-                        date:String,
-                                     
+                        SubjectCode:String,
+                        NoOfSheet:Number
+                                                        
                     }
                 
             ],      
@@ -17,16 +16,8 @@ const userSchema=mongoose.Schema({
     TeacherId:{
         type:String,
         required:true
-    },
-    NoofSheet:{
-        type:Number,
-        required:true
-    },
-    AllotBy:{
-        type:String,
-        required:true
-    },
-    AllotTo:{
+    },   
+    AllocateBy:{
         type:String,
         required:true
     },
@@ -34,20 +25,15 @@ const userSchema=mongoose.Schema({
         type:String,
         required:true
     },
-    Time:{
+    Supervisor:{
         type:String,
         required:true
-    },
-    
-    Semester:{
+    } 
+    ,
+    HeadExaminar:{
         type:String,
         required:true
-    },
-    Subject:{
-        type:String,
-        required:true
-    }
-    
+    }     
 })
 const packetAllocation=mongoose.model('packetAllocation',userSchema);
 module.exports=packetAllocation;
