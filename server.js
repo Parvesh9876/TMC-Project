@@ -1,6 +1,7 @@
 const exprees=require("express")
+require ("dotenv").config();
 const app=exprees()
-const port=3000;
+const port=process.env.PORT||3000;
 const db=require('./database/db.js')
 const path = require('path')
 const session = require('express-session');
