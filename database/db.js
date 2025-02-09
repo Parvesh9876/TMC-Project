@@ -1,6 +1,8 @@
 const mongose=require("mongoose");
+require ("dotenv").config();
+
 //const mongoURL='mongodb://localhost:27017/tmc';
-const mongoURL='mongodb+srv://soniparvesh54:m8QDf69vtIbjW8XT@data1.wejj1.mongodb.net/?retryWrites=true&w=majority&appName=data1';
+const mongoURL=process.env.MONGO_DB;
 mongose.connect(mongoURL)
 // ,{
 //     useNewUrlParser:true,
