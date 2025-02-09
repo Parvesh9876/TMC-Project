@@ -18,7 +18,7 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.18.0",
     "mogoose": "^0.0.1-security",
-    "mongodb": "^6.5.0",
+    "mongodb": "^6.13.0",
     "mongoose": "^8.3.1",
     "nodemon": "^3.1.7",
     "path": "^0.12.7"

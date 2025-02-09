@@ -1,6 +1,6 @@
 const mongose=require("mongoose");
-const mongoURL='mongodb://localhost:27017/tmc';
-
+//const mongoURL='mongodb://localhost:27017/tmc';
+const mongoURL='mongodb+srv://soniparvesh54:m8QDf69vtIbjW8XT@data1.wejj1.mongodb.net/?retryWrites=true&w=majority&appName=data1';
 mongose.connect(mongoURL)
 // ,{
 //     useNewUrlParser:true,
